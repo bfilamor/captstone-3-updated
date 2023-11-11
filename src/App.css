@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+
+body,
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+#customNavbarToggler {
+  padding:0 10px 0 0;
+  position: relative;
+  border:0px!important;
+  outline:none!important;
+  box-shadow: none!important;
+}
+#customNavbarToggler span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: #000;
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#customNavbarToggler  span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#customNavbarToggler  span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+#customNavbarToggler:not(.collapsed) span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-4px, -20px);
+  background: #232323;
+}
+
+#customNavbarToggler:not(.collapsed) >  span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#customNavbarToggler:not(.collapsed) > span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, 16px);
+}
+
+.image-upload-card {
+  min-height: 200px;
+  position: relative;
+}
+
+.image-upload-card .card-img-overlay input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+
+.image-upload-card .card-img-overlay:before {
+  content: "";
+  background: #000;
+  opacity: 0.4;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-upload-card img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardHighlight {
+  height: 100%;
+}
+
+
+.products-section:before {
+  content: '';
+  position: absolute;
+  background: #eee;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 200px;
+}
+
+.products-section>.container {
+  position: relative;
+  z-index: 2;
+}
+
+.product-card .btn {
+  display: block;
+  width: 100%;
+}
+
+#cartBtn {
+  position: relative;
+}
+
+#cartBtn .badge {
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  font-size:11px;
+  min-width:22px;
+}
+
+.home-banner {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-banner img {
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-carousel {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-carousel .carousel-item,
+.bg-carousel .carousel-inner {
+  height: 100% !important;
+}
+
+.img-box {
+  overflow: hidden;
+  min-height: 300px;
+  background: #ccc;
+}
+
+.img-box img {
+  /* transition: all 0.1s; */
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.save-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+.save-toggle p {
+  line-height: normal;
+}
+
+.save-toggle .btn {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 20px;
+  line-height: normal;
+  position: relative;
+}
+
+.saved-products-list .save-toggle {
+
+  top: 10px;
+  right: auto;
+  left: 10px;
+}
+
+.saved-products-list .save-toggle .btn {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: 14px;
+
+}
+
+.saved-products-list .save-toggle p {
+  display: none;
+}
+
+.save-toggle .btn .fa-plus {
+  position: absolute;
+  bottom: 7px;
+  right: 5px;
+  font-size: 9px;
+}
+
+/* .img-box:hover img {
+  transform: scale(1.3);
+} */
+
+.btn-dark {
+  position: relative;
+}
+
+#navDropdown {
+  text-transform: capitalize;
+}
+
+.pagination  {
+  margin-bottom:0px;
+}
+.pagination .page-link {
+  border-color:#ccc!important;
+  background:#fff;
+  color:#000;
+  border-radius:0px!important;
+  outline:none!important;
+  box-shadow: none!important;
+}
+
+.pagination .page-item.active .page-link {
+  background:#000;
+  color:#fff;
+}
+
+.custom-pagination .Mui-selected {
+  background:#212529!important;
+  color:#fff!important;
+}
+
+.order-data-grid-header * {
+  font-weight: 600!important;
+}
+
+.tab-pane {
+  overflow:hidden!important;
+  height:0px!important;
+  display: block!important;
+}
+
+.tab-pane.active {
+  overflow: unset!important;
+  height:auto!important;
+}
+
+
+@media (min-width:992px) {
+  .saved-products-list .img-box {
+    min-height: 0px;
+    max-height: 120px;
+  }
+
+  .right-side-nav-controllers {
+    position: absolute;
+    right: 20px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  #navDropdown {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    padding-right: 15px;
+  }
+
+  #navDropdown.dropdown-toggle::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  #checkOutRow {
+    min-height:100vh
+  }
+
+  .top-pagination .page-item {
+    display:none;
+  }
+  .top-pagination .page-item:first-child , .top-pagination .page-item:last-child {
+    display:inline-block;
+  }
+
+  .top-pagination .MuiPagination-ul > li {
+    display:none;
+  }
+
+  .top-pagination .MuiPagination-ul > li button {
+    background:#ccc!important;
+    border-radius: 0px!important;
+  }
+  .top-pagination .MuiPagination-ul > li:first-child , .top-pagination .MuiPagination-ul > li:last-child {
+    display:block;
+  }
+}
+
+@media (max-width:1400px) {
+  .img-box {
+    min-height: 200px;
+  }
+}
+
+@media (max-width:991px) {
+  
+  #navDropdownCont .dropdown {
+    width: 100%;
+  }
+
+  .product-card {
+    transform: none !important;
+  }
+
+  .bg-carousel {
+    position: relative !important;
+    height: 350px;
+  }
+
+  .table .form-select {
+    min-width: 100px !important;
+  }
+
+  #mobileCartBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+  }
+
+  #prescriptionAbstract {
+    min-height: 0 !important;
+  }
+
+  #navBar .navbar-brand img {
+    width: 100px;
+  }
+
+  #dashBoardSideBar {
+    min-height: auto !important;
+  }
+}

@@ -1,0 +1,88 @@
+#introSection {
+    min-height: 100vh;
+    padding-top: 40vh;
+    background: radial-gradient(ellipse at center, rgba(102, 102, 102, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+#introImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed !important;
+    background-position: center left !important;
+    background-repeat: no-repeat !important;
+}
+
+#introImg img {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#introSection h1,
+#introSection h2,
+#introSection h3 {
+    font-weight: 600;
+}
+
+#introSection h1 {
+    font-size: 64px;
+    display: flex;
+    margin: 0;
+    line-height: 0.8;
+    text-transform: uppercase;
+}
+
+#introSection h2 {
+    font-weight: 400;
+    margin: 50px 0 10px;
+}
+
+#introSection p {
+    margin: 0 0 30px 0;
+    font-size: 18px;
+}
+
+
+code {
+    font-family: input-mono, monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+
+.parallax {
+    overflow: hidden;
+    letter-spacing: -2px;
+    line-height: 0.8;
+    margin: 0;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.parallax span {
+    display: block;
+    margin-right: 30px;
+}
+
+@media (max-width:991px) {
+    #introImg {
+        background-size: cover !important;
+        background-position: center center !important;
+    }
+
+    #introSection h1 {
+        font-size: 40px;
+    }
+
+    #introSection .parallax {
+        white-space: unset;
+    }
+}
