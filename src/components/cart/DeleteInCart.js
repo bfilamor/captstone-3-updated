@@ -29,7 +29,7 @@ export const DeleteInCart = ({ cartItem }) => {
     return (
         <>
             <div>
-                <Button variant='danger' className='p-0' style={{ width: "40px", height: "40px" }} onClick={() => { deleteCartItem(productId, quantity, setInCart, setButtonLoading) }}>
+                <Button variant='danger' disabled={buttonLoading ? true : false} className='p-0' style={{ width: "40px", height: "40px" }} onClick={() => { deleteCartItem(productId, quantity, setInCart, setButtonLoading) }}>
                     {buttonLoading ? <CircularProgress size={15} color="inherit" /> :  <FontAwesomeIcon icon={faTrashAlt} />}            
                 </Button>
 
