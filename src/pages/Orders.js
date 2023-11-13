@@ -9,7 +9,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import moment from 'moment';
 import { OrderDetails } from '../components/users/OrderDetails';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { AdminLoader } from '../components/admin/AdminLoader';
 import { motion } from "framer-motion";
 import { DatePicker } from '@mui/x-date-pickers';
@@ -18,6 +18,8 @@ import { groupBy } from "lodash"
 
 export const Orders = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  let params = new URLSearchParams(location.search);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false);
@@ -30,6 +32,7 @@ export const Orders = () => {
   const [paginationPages, setPaginationPages] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
   const [groupedOrders, setGroupedOrders] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
 
 
   const checkIfLoggedin = () => {
@@ -99,7 +102,7 @@ export const Orders = () => {
   const getUserFilteredOrders = async () => {
     try {
       let token = localStorage.getItem("token");
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/orders?page=${filteredPageNumber}&startDate=${filteredStartDate ? filteredStartDate : ""}&endDate=${filteredEndDate ? filteredEndDate : ""}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/orders?page=${filteredPageNumber}&startDate=${searchParams.get("startDate") ? searchParams.get("startDate") : startDate}&endDate=${searchParams.get("endDate") ? searchParams.get("endDate") : endDate}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -129,6 +132,7 @@ export const Orders = () => {
 
         setGroupedOrders(grouped);
         setFilterLoading(false);
+
       }
 
     } catch (error) {
@@ -156,7 +160,7 @@ export const Orders = () => {
     setFilterLoading(true);
     setIsFiltering(true);
     setFilteredPageNumber(1);
-    getUserFilteredOrders();
+    setSearchParams({ startDate: startDate, endDate: endDate });
 
   }
 
@@ -167,29 +171,12 @@ export const Orders = () => {
       setFilteredPageNumber(value);
     }
   };
-  
 
   useEffect(() => {
+   
     getUserOrders();
     checkIfLoggedin();
   }, [])
-
-
-  useMemo(() => {
-    setFilteredStartDate(startDate);
-    if (isFiltering) {
-      setIsFiltering(false);
-    }
-  }, [startDate])
-
-  useMemo(() => {
-    setFilteredEndDate(endDate);
-    if (isFiltering) {
-      setIsFiltering(false);
-    }
-  }, [endDate])
-
- 
 
   useMemo(() => {
     getUserOrders();
@@ -197,10 +184,12 @@ export const Orders = () => {
 
   useMemo(() => {
     getUserFilteredOrders();
-  }, [filteredPageNumber])
+  }, [filteredPageNumber, searchParams])
 
-
-
+  useMemo(() => {
+    setSearchParams({});
+  },[])
+  
   return (
     <>
       <Container className='py-5'>
@@ -209,7 +198,7 @@ export const Orders = () => {
           <>
             <Row>
               <Col className='col-lg-3 col-12 pt-3 pe-lg-5 mb-lg-0 pb-3'>
-                <div className="position-sticky" style={{top:"20%"}}>
+                <div className="position-sticky" style={{ top: "20%" }}>
                   <p className='mt-0 mb-2'><strong>Start Date</strong></p>
                   <DatePicker value={startDate} className='w-100 mb-3' onChange={(newValue) => setStartDate(newValue)} />
 
@@ -217,7 +206,7 @@ export const Orders = () => {
                   <DatePicker value={endDate} className='w-100 mb-3' onChange={(newValue) => setEndDate(newValue)} />
 
                   <div className='text-lg-start text-center'>
-                    <Button onClick={() => { handleDateFilter() }}>Filter Dates</Button>
+                    <Button disabled={startDate && endDate ? false : true} onClick={() => { handleDateFilter() }}>Filter Dates</Button>
 
                   </div>
 

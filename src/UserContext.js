@@ -223,16 +223,7 @@ const UserProvider = ({ children }) => {
 
     }
 
-    const productInCartStatus = (productId, setInCart) => {
-        setInCart(false)
-        cart?.forEach((cartProduct) => {
-            if (cartProduct.productId === productId) {
-                setInCart(true);
-                //setButtonLoading(false)
-            }
-        })
-
-    }
+    
 
     const getCart = () => {
         let token = localStorage.getItem("token");
@@ -259,7 +250,7 @@ const UserProvider = ({ children }) => {
 
 
     const deleteCartItem = (productId, newQuantity, setInCart, setButtonLoading) => {
-
+        setButtonLoading(true);
         let token = localStorage.getItem("token");
         fetch(`${process.env.REACT_APP_API_URL}/users/deleteCartItem`, {
             method: 'PUT',
@@ -277,12 +268,25 @@ const UserProvider = ({ children }) => {
                 //fetchData();
                 //fetchCardData(productId, productData, setProductData);
                 //setButtonLoading(true)
-                productInCartStatus(productId, setInCart)
+                setInCart(false)
+                //productInCartStatus(productId, setInCart)
                 setCartCounter((prev) => {
                     return prev - 1;
                 })
                 getCart();
+                setButtonLoading(false);
             })
+    }
+
+    const productInCartStatus = (productId, setInCart, setDeleteStatus) => {
+        setInCart(false)
+        cart?.forEach((cartProduct) => {
+            if (cartProduct.productId === productId) {
+                setInCart(true);
+                //setButtonLoading(false)
+            }
+        })
+
     }
 
     const fetchAddOns = async () => {

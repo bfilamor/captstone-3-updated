@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import { Cart } from '../components/cart/Cart';
@@ -33,7 +33,7 @@ export const ProductView = () => {
 
    
 
-    useEffect(() => {
+    useMemo(() => {
         getCart();
         setSelectedAddOn([]);
     }, [productId])
@@ -90,7 +90,7 @@ export const ProductView = () => {
                                             <div>
                                                 <AddOns />
                                             </div>
-                                            <div className='d-flex gap-1 justify-content-center my-3'>
+                                            <div className='product-view-btns-cont d-flex gap-1 justify-content-center my-3'>
 
                                                 {
                                                     (stocks > 0) ?

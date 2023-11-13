@@ -378,4 +378,8 @@ h3 {
   #dashBoardSideBar {
     min-height: auto !important;
   }
+
+  .product-view-btns-cont .btn {
+    font-size:0.8em!important;
+  }
 }

@@ -47,18 +47,16 @@ export const SavedProducts = () => {
                             <Card>
                                 <Card.Body>
                                     {
-                                        (loading) ?
-                                            <SavedProductsLoader />
-                                            :
-                                            (savedProducts?.length > 0) ?
-                                                <>
-                                                    {
-                                                        savedProducts.map((product) => {
-                                                            return (<SavedProductsList productId={product} key={product} />)
-                                                        })
-                                                    }
-                                                </>
-                                                : <p className='text-center py-5'>No Products saved</p>
+                                        (savedProducts?.length > 0) ?
+                                            <>
+                                                {
+                                                    savedProducts.map((product) => {
+                                                        return (<SavedProductsList productId={product} key={product} />)
+                                                    })
+                                                }
+                                            </>
+                                            : <p className='text-center py-5'>No Products saved</p>
+
                                     }
 
                                 </Card.Body>

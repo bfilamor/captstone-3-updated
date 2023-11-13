@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { Placeholder } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { SaveProduct } from './SaveProduct';
 import { useValue } from '../../UserContext';
+import { SavedProductsLoader } from './SavedProductsLoader';
 
 export const SavedProductsList = ({ productId }) => {
   const { getSavedProducts } = useValue();
   const [productData, setProductData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const fetchProductData = async () => {
     try {
@@ -26,6 +29,7 @@ export const SavedProductsList = ({ productId }) => {
           description: prodData.description,
           savedBy: prodData.savedBy
         })
+        setLoading(false)
 
       }
     } catch (error) {
@@ -39,6 +43,10 @@ export const SavedProductsList = ({ productId }) => {
 
 
   return (
+    (loading) ? 
+    <>
+       <SavedProductsLoader/>
+    </> :
     <div className='p-3 border-bottom position-relative saved-products-list'>
       <div className='row'>
         <div className='col-lg-2 p-0 mb-3 mb-lg-0 bg-dark d-flex justify-content-center align-items-center text-white position-relative img-box'>

@@ -6,7 +6,7 @@ export const CartQuantity = ({ quantity, productId }) => {
 
     const { getCart, setCartCounter,  addOns, fetchAddOns, addOnToCheckout, setAddOnToCheckOut, selectedAddOn } = useValue();
     const [newQuantity, setNewQuantity] = useState(1);
-    const [newProductId, setNewProductId] = useState(productId);
+    //const [newProductId, setNewProductId] = useState(productId);
 
 
     const addQuantity = async () => {
@@ -77,7 +77,7 @@ export const CartQuantity = ({ quantity, productId }) => {
     }
 
     useEffect(() => {
-        setNewProductId(productId); 
+        //setNewProductId(productId); 
         setNewQuantity(quantity);
         //fetchAddOns();
     }, [])
