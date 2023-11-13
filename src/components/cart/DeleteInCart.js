@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useValue } from '../../UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const DeleteInCart = ({ cartItem }) => {
     const { productId, quantity } = cartItem;
@@ -30,7 +30,7 @@ export const DeleteInCart = ({ cartItem }) => {
         <>
             <div>
                 <Button variant='danger' className='p-0' style={{ width: "40px", height: "40px" }} onClick={() => { deleteCartItem(productId, quantity, setInCart, setButtonLoading) }}>
-                    <FontAwesomeIcon icon={faTrashAlt} />
+                    {buttonLoading ? <CircularProgress size={15} color="inherit" /> :  <FontAwesomeIcon icon={faTrashAlt} />}            
                 </Button>
 
             </div>
