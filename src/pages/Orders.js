@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Container, Card, Table, Button, Row, Col } from 'react-bootstrap';
+import { Container, Card, Table, Button, Row, Col, Form } from 'react-bootstrap';
 import { Pagination } from '@mui/material';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
@@ -9,24 +9,21 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import moment from 'moment';
 import { OrderDetails } from '../components/users/OrderDetails';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AdminLoader } from '../components/admin/AdminLoader';
 import { motion } from "framer-motion";
 import { DatePicker } from '@mui/x-date-pickers';
 import { groupBy } from "lodash"
+import { DateRangeSelect } from '../components/orders/DateRangeSelect';
 
 
 export const Orders = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  let params = new URLSearchParams(location.search);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [filteredStartDate, setFilteredStartDate] = useState('');
-  const [filteredEndDate, setFilteredEndDate] = useState('');
   const [page, setPage] = useState(1);
   const [filteredPageNumber, setFilteredPageNumber] = useState(1);
   const [paginationPages, setPaginationPages] = useState([]);
@@ -132,7 +129,6 @@ export const Orders = () => {
 
         setGroupedOrders(grouped);
         setFilterLoading(false);
-
       }
 
     } catch (error) {
@@ -157,11 +153,11 @@ export const Orders = () => {
 
   const handleDateFilter = () => {
     //setPage(1);
-    setFilterLoading(true);
     setIsFiltering(true);
     setFilteredPageNumber(1);
+    setFilterLoading(true);
     setSearchParams({ startDate: startDate, endDate: endDate });
-
+    getUserFilteredOrders();
   }
 
   const handlePaginationChange = (event, value) => {
@@ -172,10 +168,12 @@ export const Orders = () => {
     }
   };
 
+ 
   useEffect(() => {
-   
+    //setSearchParams();
     getUserOrders();
     checkIfLoggedin();
+
   }, [])
 
   useMemo(() => {
@@ -186,10 +184,13 @@ export const Orders = () => {
     getUserFilteredOrders();
   }, [filteredPageNumber, searchParams])
 
-  useMemo(() => {
+
+  useEffect(() => {
     setSearchParams({});
-  },[])
-  
+  }, [])
+
+
+
   return (
     <>
       <Container className='py-5'>
@@ -199,11 +200,20 @@ export const Orders = () => {
             <Row>
               <Col className='col-lg-3 col-12 pt-3 pe-lg-5 mb-lg-0 pb-3'>
                 <div className="position-sticky" style={{ top: "20%" }}>
+                  <div className='mb-3'>
+                    <DateRangeSelect setStartDate={setStartDate} setEndDate={setEndDate} getUserOrders={getUserOrders} size={"lg"} />
+                  </div>
+
                   <p className='mt-0 mb-2'><strong>Start Date</strong></p>
-                  <DatePicker value={startDate} className='w-100 mb-3' onChange={(newValue) => setStartDate(newValue)} />
+                  <DatePicker value={startDate} className='w-100 mb-3' onChange={(newValue) => setStartDate(newValue)} slotProps={{
+                    field: { clearable: true, onClear: () => setStartDate(null) },
+                  }} />
 
                   <p className='mt-0 mb-2'><strong>End Date</strong></p>
-                  <DatePicker value={endDate} className='w-100 mb-3' onChange={(newValue) => setEndDate(newValue)} />
+                  <DatePicker value={endDate} className='w-100 mb-3' onChange={(newValue) => setEndDate(newValue)}
+                    slotProps={{
+                      field: { clearable: true, onClear: () => setEndDate(null) },
+                    }} />
 
                   <div className='text-lg-start text-center'>
                     <Button disabled={startDate && endDate ? false : true} onClick={() => { handleDateFilter() }}>Filter Dates</Button>

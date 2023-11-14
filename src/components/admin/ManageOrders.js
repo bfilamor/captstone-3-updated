@@ -8,6 +8,7 @@ import { OrderDetailsAdmin } from './OrderDetailsAdmin';
 import { motion } from "framer-motion"
 import { OrdersDataGrid } from './OrdersDataGrid';
 import { DatePicker } from '@mui/x-date-pickers';
+import { DateRangeSelect } from '../orders/DateRangeSelect';
 
 export const ManageOrders = () => {
 
@@ -118,13 +119,16 @@ export const ManageOrders = () => {
                 <div className='py-3 border-bottom bg-white sticky-top'>
                     <Row className='justify-content-center align-items-end'>
                         <div className='col-lg-3 mb-3 mb-lg-0'>
+                            <DateRangeSelect setStartDate={setStartDate} setEndDate={setEndDate} getUserOrders={fetchOrders} size={"md"} />
+                        </div>
+                        <div className='col-lg-3 mb-3 mb-lg-0'>
                             <p className='mt-0 mb-2'><strong>Start Date</strong></p>
-                            <DatePicker  slotProps={{ textField: { size: 'small' } }} value={startDate} className='w-100'  onChange={(newValue) => setStartDate(newValue)} />
+                            <DatePicker slotProps={{ textField: { size: 'small' } }} value={startDate} className='w-100' onChange={(newValue) => setStartDate(newValue)} />
 
                         </div>
                         <div className='col-lg-3 mb-3 mb-lg-0'>
                             <p className='mt-0 mb-2'><strong>End Date</strong></p>
-                            <DatePicker  slotProps={{ textField: { size: 'small' } }} value={endDate} className='w-100' onChange={(newValue) => setEndDate(newValue)} />
+                            <DatePicker slotProps={{ textField: { size: 'small' } }} value={endDate} className='w-100' onChange={(newValue) => setEndDate(newValue)} />
 
                         </div>
                         <div className='col-lg-3'>
@@ -140,7 +144,7 @@ export const ManageOrders = () => {
                 </div>
                 {error ? <p className='fs-4 text-center py-5'>No Orders Found</p> :
                     <div style={{ overflowX: "auto", width: "100%" }}>
-                        <div className='admin-data-grid-cont' style={{ minWidth:"1000px", height:600, width: "100%" }}>
+                        <div className='admin-data-grid-cont' style={{ minWidth: "1000px", height: 600, width: "100%" }}>
                             <OrdersDataGrid fetchOrders={fetchOrders} ordersData={ordersData} />
                         </div>
 
