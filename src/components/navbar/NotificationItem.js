@@ -8,7 +8,7 @@ export const NotificationItem = ({ notification }) => {
     return (
         <>
             <Dropdown.Item href={`/appointments/${notification.appointmentId}`}
-                className={`${notification.isOld === false ? "bg-light" : "bg-white"} ${notification.isRead === false ? "fw-bold" : "fw-normal"} p-3 border-bottom text-dark`}
+                className={`${notification.isOld === false ? "bg-light" : "bg-white"} ${notification.isRead === false ? "fw-bold" : "fw-normal"} p-3 border-bottom text-dark notification-item`}
                 onClick={() => readNotification(notification._id)}
             >
                 <p className='mb-0 mt-0'>Your appointment on <strong>{moment(notification.appointmentDate).format("MMM DD, YYYY")}</strong> at <strong>{notification.timeSlot}</strong> was <span className={`${notification.status === "approved" ? "text-success" : "text-danger"} fw-bold`}>{notification.status === "approved" ? notification.status : "declined"}</span> by Dr. <span className='text-capitalize'>{notification.doctorName}</span></p>
