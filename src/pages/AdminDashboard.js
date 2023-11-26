@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useValue } from '../UserContext';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { AdminView } from '../components/admin/AdminView';
+import { AdminView } from '../components/admin/products/AdminView';
 import { Container, Nav, Tab } from 'react-bootstrap';
-import { AdminTools } from '../components/admin/AdminTools';
-import { ManageOrders } from '../components/admin/ManageOrders';
+import { AdminTools } from '../components/admin/tools/AdminTools';
+import { ManageOrders } from '../components/admin/orders/ManageOrders';
+import { DoctorSchedule } from '../components/admin/doctors/DoctorSchedule';
+import { AppointmentsAdmin } from '../components/admin/appointments/AppointmentsAdmin';
 
 export const AdminDashboard = () => {
     const navigate = useNavigate();
@@ -23,8 +25,8 @@ export const AdminDashboard = () => {
                 if (data) {
                     if (data.isAdmin !== true || data.isAdmin === null) {
                         navigate("/products")
-                    } 
-                   
+                    }
+
                 } else {
                     navigate("/products")
                 }
@@ -57,7 +59,12 @@ export const AdminDashboard = () => {
                                 <Nav.Item>
                                     <Nav.Link className='text-white fs-5' eventKey="second">Manage Orders</Nav.Link>
                                 </Nav.Item>
-
+                                <Nav.Item>
+                                    <Nav.Link className='text-white fs-5' eventKey="fourth">Manage Doctor's Schedule</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link className='text-white fs-5' eventKey="fifth">Manage Appointments</Nav.Link>
+                                </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link className='text-white fs-5' eventKey="third">Admin Tools</Nav.Link>
                                 </Nav.Item>
@@ -79,6 +86,12 @@ export const AdminDashboard = () => {
                             </Tab.Pane>
                             <Tab.Pane eventKey="third">
                                 <AdminTools />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="fourth">
+                                <DoctorSchedule />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="fifth">
+                                <AppointmentsAdmin />
                             </Tab.Pane>
                         </Tab.Content>
                     </div>

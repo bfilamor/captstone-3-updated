@@ -14,7 +14,7 @@ export const PreviewProducts = ({ data, breakPoint }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}>
             
-            <Tilt className="bg-light cardHighlight h-100 card" options={{ max: 20, scale: 1, speed: 250 }} >
+            <Tilt className="bg-light cardHighlight h-100 card shadow-sm" options={{ max: 20, scale: 1, speed: 250 }} >
 
                 <div className='img-box overflow-hidden'>
                     <Link style={{ textDecoration: "none" }} className='fs-5 text-dark text-capitalize' to={`/products/single/${_id}`}>

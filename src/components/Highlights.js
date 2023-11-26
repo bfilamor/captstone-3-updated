@@ -92,7 +92,7 @@ export const Highlights = () => {
                             <div className='bg-dark bg-opacity-50 d-flex align-items-center justify-content-center h-100 position-relative ' style={{ zIndex: 2 }}>
                                 <div className='text-center'>
                                     <h2 className='text-white text-center fw-bold'>Need An Eye Checkup?</h2>
-                                    <Link className='btn btn-outline-light' to="https://www.facebook.com/ZarateVeranoOptical" style={{ borderRadius: "25px" }}>Book An Appointment</Link>
+                                    <Link className='btn btn-outline-light' to="/booking" style={{ borderRadius: "25px" }}>Book An Appointment</Link>
                                 </div>
 
                             </div>

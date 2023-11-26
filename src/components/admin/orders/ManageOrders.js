@@ -1,14 +1,14 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { Button, Table, Form, InputGroup, Row } from 'react-bootstrap';
-import { useValue } from '../../UserContext';
-import { AdminLoader } from './AdminLoader';
+import { useValue } from '../../../UserContext';
+import { AdminLoader } from '../loaders/AdminLoader';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { OrderDetailsAdmin } from './OrderDetailsAdmin';
 import { motion } from "framer-motion"
 import { OrdersDataGrid } from './OrdersDataGrid';
 import { DatePicker } from '@mui/x-date-pickers';
-import { DateRangeSelect } from '../orders/DateRangeSelect';
+import { DateRangeSelect } from '../../orders/DateRangeSelect';
 
 export const ManageOrders = () => {
 
@@ -39,7 +39,6 @@ export const ManageOrders = () => {
             .then(data => {
                 if (data) {
                     if (data.isAdmin !== true || data.isAdmin === null) {
-                        console.log(data.isAdmin)
                         navigate("/products")
                     }
 

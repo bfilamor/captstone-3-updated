@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap'
-import { EditProduct } from './EditProduct'
-import { ArchiveProduct } from './ArchiveProduct'
-import { ActivateProduct } from './ActivateProduct';
-import { useValue } from '../../UserContext';
-import { FeatureProduct } from './FeatureProduct';
-import { UnfeatureProduct } from './UnfeatureProduct';
-import { AddProduct } from './AddProduct';
+import { EditProduct } from '../products/EditProduct'
+import { ArchiveProduct } from '../products/ArchiveProduct'
+import { ActivateProduct } from '../products/ActivateProduct';
+import { useValue } from '../../../UserContext';
+import { FeatureProduct } from '../products/FeatureProduct';
+import { UnfeatureProduct } from '../products/UnfeatureProduct';
+import { AddProduct } from '../products/AddProduct';
 import { AddAdminUser } from './AddAdminUser';
 
 export const AdminTools = () => {

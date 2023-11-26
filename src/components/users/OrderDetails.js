@@ -59,7 +59,7 @@ export const OrderDetails = ({ productId }) => {
 
 
                                         <p className='mb-0 fs-4 fw-bold'>Billing Name</p>
-                                        <p className='fs-4'>{order.billingAddress ? order.customerName : "Not Indicated"} </p>
+                                        <p className='fs-4'>{order.customerName ? order.customerName : "Not Indicated"} </p>
 
                                         <p className='mb-0 fs-4 fw-bold'>Billing Address</p>
                                         <p className='fs-4'>{order.billingAddress ? order.billingAddress : "Not Indicated"} </p>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Button, Modal, Form, FloatingLabel, CloseButton } from "react-bootstrap"
 import Swal from "sweetalert2";
-import { useValue } from "../../UserContext";
+import { useValue } from "../../../UserContext";
 import FileBase from 'react-file-base64';
 import axios from 'axios';
 

@@ -5,13 +5,13 @@ import { useSearchParams } from 'react-router-dom';
 import { EditProduct } from './EditProduct'
 import { ArchiveProduct } from './ArchiveProduct'
 import { ActivateProduct } from './ActivateProduct';
-import { useValue } from '../../UserContext';
+import { useValue } from '../../../UserContext';
 import { FeatureProduct } from './FeatureProduct';
 import { UnfeatureProduct } from './UnfeatureProduct';
 import { AddProduct } from './AddProduct';
-import { AdminLoader } from './AdminLoader';
+import { AdminLoader } from '../loaders/AdminLoader';
 import { motion } from 'framer-motion';
-import { ProductsSort } from '../products/ProductsSort';
+import { ProductsSort } from '../../products/ProductsSort';
 import { SelectProductCategory } from './SelectProductCategory';
 import { ProductStatusFilter } from './ProductStatusFilter';
 

@@ -5,7 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from './components/layout/AppNavbar';
 import { Login } from './pages/Login';
 import Register from './pages/Register';
 import { Home } from './pages/Home';
@@ -23,10 +23,14 @@ import { AdminDashboard } from './pages/AdminDashboard';
 import { PrescriptionGlasses } from './pages/PrescriptionGlasses';
 import { SunGlasses } from './pages/SunGlasses';
 import { ReadingGlasses } from './pages/ReadingGlasses';
-import { Footer } from './components/Footer';
+import { Footer } from './components/layout/Footer';
 import { IntroSection } from './components/introSection/IntroSection';
 import { CartModal } from './components/cart/CartModal';
 import { SavedProducts } from './pages/SavedProducts';
+import { Booking } from './pages/Booking';
+import { Notifications } from './pages/Notifications';
+import { Appointments } from './pages/Appointments';
+import { AppointmentView } from './pages/AppointmentView';
 
 
 function App() {
@@ -52,7 +56,10 @@ function App() {
           <Route path='/products/sunglasses' element={<SunGlasses />} />
           <Route path='/products/reading' element={<ReadingGlasses />} />
           <Route path='/saved-products' element={<SavedProducts />} />
-
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route exact path='/appointments/:appointmentId' element={<AppointmentView/>} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route exact path='/products/single/:productId' element={<ProductView />} />
           <Route path='/register' element={<Register />} />
           <Route path='/profile' element={<Profile />} />

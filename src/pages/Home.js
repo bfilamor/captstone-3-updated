@@ -1,5 +1,5 @@
 import React from 'react'
-import { Banner } from '../components/Banner';
+import { Banner } from '../components/layout/Banner';
 import { Highlights } from '../components/Highlights';
 import { FeaturedProducts } from '../components/products/FeaturedProducts';
 

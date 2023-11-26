@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState} from 'react';
 import { Button, Container, Modal, CloseButton, Card, Table, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import { useValue } from '../../UserContext';
+import { useValue } from '../../../UserContext';
 import moment from 'moment';
 import Swal from 'sweetalert2';
-import { TotalAmount } from '../checkout/TotalAmount';
-import { SubTotal } from '../checkout/SubTotal';
+import { TotalAmount } from '../../checkout/TotalAmount';
+import { SubTotal } from '../../checkout/SubTotal';
 
 export const OrderDetailsAdmin = ({ orderId, fetchOrders }) => {
 

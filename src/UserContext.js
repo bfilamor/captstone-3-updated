@@ -18,7 +18,25 @@ const UserProvider = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLoggedin, setIsLoggedin] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
-   
+    const [productsData, setProductsData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [cart, setCart] = useState([]);
+    const [addOns, setAddOns] = useState([]);
+    const [selectedAddOn, setSelectedAddOn] = useState([]);
+    /* const [productData, setProductData] = useState({
+        name: "",
+        description: "",
+        price: 0,
+        stocks: 0,
+        inCart:false
+    }) */
+    const [cartCounter, setCartCounter] = useState(0)
+    const [productLoading, setProductLoading] = useState(true);
+    const [addOnToCheckout, setAddOnToCheckOut] = useState([]);
+    const [savedProducts, setSavedProducts] = useState([]);
+    const [notifications, setNotifications] = useState([]);
+    const [notificationsCounter, setNotificationsCounter] = useState(0);
+
 
     let userSession = localStorage.getItem("token");
 
@@ -68,22 +86,7 @@ const UserProvider = ({ children }) => {
 
     //cart / product functions
 
-    const [productsData, setProductsData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [cart, setCart] = useState([]);
-    const [addOns, setAddOns] = useState([]);
-    const [selectedAddOn, setSelectedAddOn] = useState([]);
-    /* const [productData, setProductData] = useState({
-        name: "",
-        description: "",
-        price: 0,
-        stocks: 0,
-        inCart:false
-    }) */
-    const [cartCounter, setCartCounter] = useState(0)
-    const [productLoading, setProductLoading] = useState(true);
-    const [addOnToCheckout, setAddOnToCheckOut] = useState([]);
-    const [savedProducts, setSavedProducts] = useState([]);
+
 
     //this function will be used for props drilling for adminview component and its child components
     const fetchData = async () => {
@@ -223,7 +226,7 @@ const UserProvider = ({ children }) => {
 
     }
 
-    
+
 
     const getCart = () => {
         let token = localStorage.getItem("token");
@@ -333,10 +336,74 @@ const UserProvider = ({ children }) => {
 
     }
 
+    const getNotifications = async () => {
+        try {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/notifications`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            const data = await res.json();
+
+            if (data) {
+                setNotifications(data.reverse());
+                const count = data.filter((data) => data.isOld === false);
+                setNotificationsCounter(count.length);
+            }
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    const showNotifications = async () => {
+        try {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/notifications/markAllAsOld`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            const data = await res.json();
+
+            if (data) {
+                getNotifications();
+            }
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    const readNotification = async (notificationId) => {
+        try {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/users/notifications/read`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify({
+                    notificationId: notificationId
+                })
+            })
+            const data = await res.json();
+
+            if (data) {
+                getNotifications();
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
 
     const valueObject = useMemo(() => {
-        return { user, setUser, unsetUser, userSession, getUserDetails, isAdmin, isLoggedin, setIsLoggedin, isCartOpen, setIsCartOpen, fetchData, productsData, cart, getCart, setCart, loading, deleteCartItem, fetchCardData, cartCounter, setCartCounter, productInCartStatus, fetchAddOns, addOns, setAddOns, selectedAddOn, setSelectedAddOn, addOnToCheckout, setAddOnToCheckOut, savedProducts, setSavedProducts,  getSavedProducts }
-    }, [user, setUser, unsetUser, userSession, getUserDetails, isAdmin, isLoggedin, setIsLoggedin, isCartOpen, setIsCartOpen, fetchData, productsData, cart, getCart, setCart, loading, deleteCartItem, fetchCardData, productInCartStatus, fetchAddOns, addOns, setAddOns, addOnToCheckout, setAddOnToCheckOut, savedProducts,  setSavedProducts, getSavedProducts])
+        return { user, setUser, unsetUser, userSession, getUserDetails, isAdmin, isLoggedin, setIsLoggedin, isCartOpen, setIsCartOpen, fetchData, productsData, cart, getCart, setCart, loading, deleteCartItem, fetchCardData, cartCounter, setCartCounter, productInCartStatus, fetchAddOns, addOns, setAddOns, selectedAddOn, setSelectedAddOn, addOnToCheckout, setAddOnToCheckOut, savedProducts, setSavedProducts, getSavedProducts, notifications, getNotifications, showNotifications, readNotification, notificationsCounter }
+    }, [user, setUser, unsetUser, userSession, getUserDetails, isAdmin, isLoggedin, setIsLoggedin, isCartOpen, setIsCartOpen, fetchData, productsData, cart, getCart, setCart, loading, deleteCartItem, fetchCardData, productInCartStatus, fetchAddOns, addOns, setAddOns, addOnToCheckout, setAddOnToCheckOut, savedProducts, setSavedProducts, getSavedProducts, notifications, getNotifications, showNotifications, readNotification, notificationsCounter])
 
     return <UserContext.Provider value={valueObject}>{children}  </UserContext.Provider>
 }

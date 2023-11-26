@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Container, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import bannerImage from '../images/banner-image.jpg';
+import bannerImage from '../../images/banner-image.jpg';
 import { motion } from "framer-motion"
 
 

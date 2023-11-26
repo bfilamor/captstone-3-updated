@@ -8,7 +8,7 @@ export const Login = () => {
     /* const navigate = useNavigate(); */
 
     //allows us to consune the user context object and it's properties to use for user validation
-    const { user, setUser, setIsLoggedin } = useValue();
+    const { user, setUser, setIsLoggedin, getNotifications  } = useValue();
 
     // State hooks to store the values of the input fields
     const [email, setEmail] = useState("");
@@ -47,7 +47,7 @@ export const Login = () => {
                     }) */
                     retrieveUserDetails(data.access)
                     setIsLoggedin(true);
-
+                    getNotifications();
                     Swal.fire({
                         title: "Login Successful",
                         icon: "success",

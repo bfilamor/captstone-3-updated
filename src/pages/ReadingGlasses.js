@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useMemo } from 'react';
 import { Button, Col, Container, Row, Form, InputGroup } from 'react-bootstrap';
 import { Pagination } from '@mui/material';
-import { AdminView } from '../components/admin/AdminView';
+import { AdminView } from '../components/admin/products/AdminView';
 import { useValue } from '../UserContext';
 import { UserView } from '../components/users/UserView';
 import { Navigate } from 'react-router-dom';

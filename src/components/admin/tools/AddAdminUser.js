@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Button, Modal, Form, FloatingLabel, CloseButton } from "react-bootstrap"
 import Swal from "sweetalert2";
-import { useValue } from "../../UserContext";
+import { useValue } from "../../../UserContext";
 
 export const AddAdminUser = ({ fetchAllAdmin }) => {
     //got fetchData by props drilling. this function came from the Products component then was passed into its child components

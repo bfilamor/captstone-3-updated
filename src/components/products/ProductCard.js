@@ -30,7 +30,7 @@ export const ProductCard = ({ productProp }) => {
             initial={{ opacity: 0, y: "-100px" }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}>
-            <Tilt className="h-100 border product-card bg-light card overflow-hidden" options={{ max: 20, scale: 1, speed: 250 }} >
+            <Tilt className="h-100 border product-card bg-light card overflow-hidden shadow-sm" options={{ max: 20, scale: 1, speed: 250 }} >
                 <div className='img-box position-relative'>
                     <Link to={`/products/single/${_id}`}>
                         {(productPhoto && productPhoto !== "false") ?

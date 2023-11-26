@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Button, Modal, Form, FloatingLabel, CloseButton } from "react-bootstrap"
 import Swal from "sweetalert2";
-import { useValue } from "../../UserContext";
+import { useValue } from "../../../UserContext";
 import axios from 'axios';
 
 export const AddProduct = ({ fetchData }) => {

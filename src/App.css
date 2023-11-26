@@ -13,12 +13,13 @@ h3 {
 }
 
 #customNavbarToggler {
-  padding:0 10px 0 0;
+  padding: 0 10px 0 0;
   position: relative;
-  border:0px!important;
-  outline:none!important;
-  box-shadow: none!important;
+  border: 0px !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
+
 #customNavbarToggler span {
   display: block;
   width: 33px;
@@ -33,11 +34,11 @@ h3 {
     background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 }
 
-#customNavbarToggler  span:first-child {
+#customNavbarToggler span:first-child {
   transform-origin: 0% 0%;
 }
 
-#customNavbarToggler  span:nth-last-child(2) {
+#customNavbarToggler span:nth-last-child(2) {
   transform-origin: 0% 100%;
 }
 
@@ -47,12 +48,12 @@ h3 {
   background: #232323;
 }
 
-#customNavbarToggler:not(.collapsed) >  span:nth-last-child(3) {
+#customNavbarToggler:not(.collapsed)>span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-#customNavbarToggler:not(.collapsed) > span:nth-last-child(2) {
+#customNavbarToggler:not(.collapsed)>span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, 16px);
 }
 
@@ -127,12 +128,12 @@ h3 {
   border-radius: 50%;
   top: 0;
   right: 0;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1/1;
-  font-size:11px;
-  min-width:22px;
+  font-size: 11px;
+  min-width: 22px;
 }
 
 .home-banner {
@@ -245,41 +246,90 @@ h3 {
   text-transform: capitalize;
 }
 
-.pagination  {
-  margin-bottom:0px;
+.pagination {
+  margin-bottom: 0px;
 }
+
 .pagination .page-link {
-  border-color:#ccc!important;
-  background:#fff;
-  color:#000;
-  border-radius:0px!important;
-  outline:none!important;
-  box-shadow: none!important;
+  border-color: #ccc !important;
+  background: #fff;
+  color: #000;
+  border-radius: 0px !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .pagination .page-item.active .page-link {
-  background:#000;
-  color:#fff;
+  background: #000;
+  color: #fff;
 }
 
 .custom-pagination .Mui-selected {
-  background:#212529!important;
-  color:#fff!important;
+  background: #212529 !important;
+  color: #fff !important;
 }
 
 .order-data-grid-header * {
-  font-weight: 600!important;
+  font-weight: 600 !important;
 }
 
 .tab-pane {
-  overflow:hidden!important;
-  height:0px!important;
-  display: block!important;
+  overflow: hidden !important;
+  height: 0px !important;
+  display: block !important;
 }
 
 .tab-pane.active {
-  overflow: unset!important;
-  height:auto!important;
+  overflow: unset !important;
+  height: auto !important;
+}
+
+#notificationsMenu .dropdown-menu {
+  width: 400px;
+}
+
+.dropdown-menu {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+#notificationsMenu .dropdown-item:hover,
+.notification-item:hover {
+  background: #eee !important;
+}
+
+.notification-btn {
+  border: 0px !important;
+  font-size: 30px !important;
+  position: relative;
+  background: none !important;
+  color: #000 !important;
+}
+
+.notification-btn .badge {
+  position: absolute !important;
+  border-radius: 50%;
+  top: 0 !important;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  font-size: 11px;
+  min-width: 22px;
+}
+
+#notificationsMenu .dropdown-toggle::after {
+  display: none;
+}
+
+#notificationsMenu .dropdown-menu *,
+.notification-item {
+  white-space: unset!important;
+}
+
+#notificationsMenu .notification-cont {
+  max-height: 350px;
+  overflow-y: auto;
 }
 
 
@@ -289,11 +339,18 @@ h3 {
     max-height: 120px;
   }
 
+  .left-side-nav-controllers {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   .right-side-nav-controllers {
     position: absolute;
     right: 20px;
-    top:50%;
-    transform:translateY(-50%);
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   #navDropdown {
@@ -312,26 +369,30 @@ h3 {
   }
 
   #checkOutRow {
-    min-height:100vh
+    min-height: 100vh
   }
 
   .top-pagination .page-item {
-    display:none;
-  }
-  .top-pagination .page-item:first-child , .top-pagination .page-item:last-child {
-    display:inline-block;
+    display: none;
   }
 
-  .top-pagination .MuiPagination-ul > li {
-    display:none;
+  .top-pagination .page-item:first-child,
+  .top-pagination .page-item:last-child {
+    display: inline-block;
   }
 
-  .top-pagination .MuiPagination-ul > li button {
-    background:#ccc!important;
-    border-radius: 0px!important;
+  .top-pagination .MuiPagination-ul>li {
+    display: none;
   }
-  .top-pagination .MuiPagination-ul > li:first-child , .top-pagination .MuiPagination-ul > li:last-child {
-    display:block;
+
+  .top-pagination .MuiPagination-ul>li button {
+    background: #ccc !important;
+    border-radius: 0px !important;
+  }
+
+  .top-pagination .MuiPagination-ul>li:first-child,
+  .top-pagination .MuiPagination-ul>li:last-child {
+    display: block;
   }
 }
 
@@ -342,7 +403,6 @@ h3 {
 }
 
 @media (max-width:991px) {
-  
   #navDropdownCont .dropdown {
     width: 100%;
   }
@@ -380,6 +440,6 @@ h3 {
   }
 
   .product-view-btns-cont .btn {
-    font-size:0.8em!important;
+    font-size: 0.8em !important;
   }
 }

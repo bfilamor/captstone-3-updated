@@ -10,7 +10,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import moment from 'moment';
 import { OrderDetails } from '../components/users/OrderDetails';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { AdminLoader } from '../components/admin/AdminLoader';
+import { AdminLoader } from '../components/admin/loaders/AdminLoader';
 import { motion } from "framer-motion";
 import { DatePicker } from '@mui/x-date-pickers';
 import { groupBy } from "lodash"
@@ -43,7 +43,7 @@ export const Orders = () => {
       .then(data => {
         if (!data) {
           //if the token is not an admin, redirect to /courses page
-          navigate("/products")
+          navigate("/login")
         }
 
         if (data.isAdmin === true) {
@@ -249,7 +249,7 @@ export const Orders = () => {
                                             <TimelineConnector />
                                           </TimelineSeparator>
                                           <TimelineContent>
-                                            <div className='bg-light border overflow-hidden my-2 d-block p-3' style={{ borderRadius: "15px" }} >
+                                            <div className='bg-light border overflow-hidden my-2 d-block p-3 shadow-sm' style={{ borderRadius: "15px" }} >
                                               <div className='row'>
                                                 <div className='col-5'>
                                                   <p className='fw-bold mb-0'>Order ID</p>

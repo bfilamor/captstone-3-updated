@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { NavDropdown } from 'react-bootstrap'
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHistory, faSignOutAlt, faTrashCan, faUser } from '@fortawesome/free-solid-svg-icons'
-import {  faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faCalendar, faHeart, faHistory, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons'
 
 export const ProfileDropdown = () => {
     const [profile, setProfile] = useState({});
@@ -49,6 +48,7 @@ export const ProfileDropdown = () => {
                     <NavDropdown.Item  className='d-flex gap-2 py-2 pe-lg-5' as={NavLink} to="/profile" exact="true"><span className='rounded-circle d-flex justify-content-center align-items-center' style={{ width: "30px", height: "30px", background:"#ccc" }}><FontAwesomeIcon icon={faUser} /></span> <span>Profile</span></NavDropdown.Item>
                     <NavDropdown.Item className='d-flex gap-2 py-2 pe-lg-5' as={NavLink} to="/orders" exact="true"><span className='rounded-circle d-flex justify-content-center align-items-center' style={{ width: "30px", height: "30px", background:"#ccc" }}><FontAwesomeIcon icon={faHistory} /></span> <span>Transaction History</span></NavDropdown.Item>
                     <NavDropdown.Item className='d-flex gap-2 py-2 pe-lg-5' as={NavLink} to="/saved-products" exact="true"><span className='rounded-circle d-flex justify-content-center align-items-center' style={{ width: "30px", height: "30px", background:"#ccc" }}><FontAwesomeIcon icon={faHeart} /></span> <span>Saved Products</span></NavDropdown.Item>
+                    <NavDropdown.Item className='d-flex gap-2 py-2 pe-lg-5' as={NavLink} to="/appointments" exact="true"><span className='rounded-circle d-flex justify-content-center align-items-center' style={{ width: "30px", height: "30px", background:"#ccc" }}><FontAwesomeIcon icon={faCalendar} /></span> <span>Appointments</span></NavDropdown.Item>
                     <NavDropdown.Item  className='d-none d-lg-flex gap-2 py-2 pe-lg-5' as={NavLink} to="/logout" exact="true"><span className='rounded-circle d-flex justify-content-center align-items-center' style={{ width: "30px", height: "30px", background:"#ccc" }}><FontAwesomeIcon icon={faSignOutAlt} /></span> <span>Logout</span></NavDropdown.Item>
                 </NavDropdown>
 
